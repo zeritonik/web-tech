@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h2 class="mb-4 text-center">New question</h2>
+    <form class="d-flex flex-column align-items-end gap-3 mx-auto" style="width: fit-content;" action="">
+        <label>
+            Title.
+            <input class="mt-2" style="width: 40vw;" id="question-title" name="question-title" type="text" maxlength="32" required>
+        </label>
+        <label>
+            Text. 
+            <textarea class="mt-2" style="width: 40vw; height: 15em;" id="question-text" name="question-text" maxlength="1024" required></textarea>
+        </label>
+        <label>
+            Tags.
+            <input class="mt-2" style="width: 40vw;" id="question-tags" name="question-tags" type="text" maxlength="64" required>
+        </label>
+        <input class="align-self-center border-0 rounded-4 p-1 bg-success text-light w-25" type="submit" value="Ask!">
+    </form>
+{% endblock %}

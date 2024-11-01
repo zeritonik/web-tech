@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h2 class="mb-4 text-center">Log in</h2>
+    <form class="d-flex flex-column align-items-end gap-3 mx-auto" style="width: fit-content;" action="">
+        <label>
+            Login.
+            <input class="mt-2" style="width: 20vw;" id="login" name="login" type="text" maxlength="16" required>
+        </label>
+        <label>
+            Password.
+            <input class="mt-2" style="width: 20vw;" id="password" name="password" type="password" maxlength="32" required>
+        </label>
+        <div class="w-100 d-flex gap-2 justify-content-end align-items-center">
+            <input class="border-0 rounded-4 p-1 bg-success text-light w-25" type="submit" value="Login">
+            <a class="link-underline" href="{% url 'signup' %}">create new account</a>
+        </div>
+    </form>
+{% endblock %}
