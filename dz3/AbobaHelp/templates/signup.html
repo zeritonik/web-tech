@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h2 class="mb-4 text-center">Registration</h2>
+    <form class="d-flex flex-column align-items-end gap-3 mx-auto" style="width: fit-content;" action="" enctype="multipart/form-data">
+        <label>
+            Login.
+            <input class="mt-2" style="width: 20vw;" id="login" name="login" type="text" maxlength="16" required>
+        </label>
+        <label>
+            Email.
+            <input class="mt-2" style="width: 20vw;" id="email" name="email" type="email" maxlength="32" required>
+        </label>
+        <label>
+            Nickname.
+            <input class="mt-2" style="width: 20vw;" id="nickname" name="nickname" type="text" maxlength="16" required>
+        </label>
+        <label>
+            Password.
+            <input class="mt-2" style="width: 20vw;" id="password" name="password" type="password" maxlength="32" required>
+        </label>
+        <label>
+            Repeat password.
+            <input class="mt-2" style="width: 20vw;" id="password-repeat" type="password" maxlength="32" required>
+        </label>
+        <label>
+            Avatar.
+            <input class="mt-2" style="width: 20vw;" id="avatar" name="avatar" type="file" accept="image/*">
+        </label>
+        <input class="align-self-center border-0 rounded-4 p-1 bg-success text-light w-25" type="submit" value="Sign up">
+    </form>
+{% endblock %}
