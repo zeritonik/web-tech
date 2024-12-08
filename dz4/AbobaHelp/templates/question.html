@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    {% include 'temp_question.html' %}
+
+    <div class="card-group flex-column gap-3 pt-5">
+        {% for answer in answers %}
+            {% include 'temp_answer.html' %}
+        {% endfor %}
+    </div>
+
+    <form class="mt-3" method="POST" action="">
+        {% csrf_token %}
+        {{ form }}
+        <input class="bg-success text-light border-0 rounded-pill p-2 mt-3" type="submit" value="Answer">
+    </form>
+
+    {% include "temp_paginator.html" %}
+{% endblock %}

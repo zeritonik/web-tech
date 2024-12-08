@@ -1,0 +1,11 @@
+<nav class="mt-3">
+    <ul class="pagination gap-2">
+        {% if page.has_previous %}
+            <li class="page-item"><a href="?page={{ page.previous_page_number }}" class="page-link border-2 rounded-4">prev</a></li>
+        {% endif %}
+        <li class="page-item"><a href="" class="page-link active border-2 rounded-4">{{ page.number }}</a></li>
+        {% if page.has_next %}
+            <li class="page-item"><a href="?page={{ page.next_page_number }}" class="page-link border-2 rounded-4">next</a></li>
+        {% endif %}
+    </ul>
+</nav>
