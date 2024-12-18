@@ -1,23 +1,23 @@
-{% load static %}
-
-<div id="Answer-{{ answer.id }}" class="card rounded-4 border">
+<div id="Answer-{{ answer.id }}" data-type="answer" data-id="{{ answer.id }}" class="card rounded-4 border">
     <div class="card-body d-flex gap-3">
         <div class="d-flex flex-column align-items-center border border-3 rounded-4">
-            <img src="{% static answer.author.avatar %}" alt="👤" class="card-img fs-1" style="width: 8rem; height: 8rem;">
+            <img src="{{ MEDIA_URL }}{{ answer.author.avatar }}" alt="👤" class="card-img fs-1" style="width: 8rem; height: 8rem;">
             <div class="d-flex align-items-center flex-grow-1 gap-2 border-top border-3 p-1 mt-2">
-                <p class="m-0 text-center">{{ answer.rating }}</p>
-                <div class="d-flex gap-1">
-                    <button class="border border-0 rounded-1 text-light bg-success">⇧</button>
-                    <button class="border border-0 rounded-1 text-light bg-danger">⇩</button>
-                </div>
+                <p class="m-0 text-center" data-type="answer-rating">{{ answer.rating }}</p>
+                {% if profile.id not in answer.liked_by %}
+                    <div class="d-flex gap-1">
+                        <button data-type="answer-like" class="border border-0 rounded-1 text-light bg-success">⇧</button>
+                        <button data-type="answer-dislike" class="border border-0 rounded-1 text-light bg-danger">⇩</button>
+                    </div>
+                {% endif %}
             </div>
         </div>
         <div class="d-flex flex-column justify-content-between">
             <p class="card-text">{{ answer.text }}</p>
-            {% if answer.correct %}
-                <label><input class="me-2" type="checkbox" checked disabled>correct</label>
+            {% if profile == answer.author %}
+                <label><input class="me-2" type="checkbox" {% if answer.correct %}checked{% endif %} data-type="answer-correct">correct</label>
             {% else %}
-                <label><input class="me-2" type="checkbox" disabled>correct</label>
+                <label><input class="me-2" type="checkbox" disabled {% if answer.correct %}checked{% endif %} data-type="answer-correct">correct</label>
             {% endif %}
         </div>
     </div>

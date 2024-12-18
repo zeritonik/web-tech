@@ -59,6 +59,10 @@ class Question(models.Model):
     @property
     def answer_count(self):
         return Answer.objects.filter(question=self).count()
+    
+    @property
+    def liked_by(self):
+        return self.questionlike_set.values_list('author', flat=True)
 
     def __str__(self) -> str:
         return f"{self.author_id} {self.title[0:16]} {self.text[0:16]}"
@@ -89,6 +93,10 @@ class Answer(models.Model):
     @property
     def rating(self):
         return AnswerLike.objects.filter(answer=self).aggregate(like__sum=Coalesce(Sum('like'), 0)).get('like__sum')
+    
+    @property
+    def liked_by(self):
+        return self.answerlike_set.values_list('author', flat=True)
 
     def __str__(self) -> str:
         return f"{self.author_id} {self.text[0:16]} {self.correct}"

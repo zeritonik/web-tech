@@ -13,6 +13,8 @@
     }
   </style>
   <body>
+    {% load static %}
+    {% get_media_prefix as MEDIA_URL %}
     <header data-bs-theme="dark">
         <nav class="navbar navbar-expand-md p-3 bg-dark text-light">
             <div class="container-fluid justify-content-spacearound">
@@ -26,10 +28,9 @@
                     </form>
                 </div>
                 <div class="navbar-profile p-1 d-flex align-items-center gap-3">
-                    {% load static %}
                     {% if user.is_authenticated %}
                         <div class="navbar-profile__image">
-                            <img style="width: 5rem; height: 5rem;" src="{% static user.profile.avatar %}" alt="👤">
+                            <img style="width: 5rem; height: 5rem;" src="{{ MEDIA_URL }}{{ user.profile.avatar }}" alt="👤">
                         </div>
                         <div class="navbar-profile__right">
                             {{ user.profile.nickname }}
@@ -82,5 +83,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/question_like.js' %}"></script>
+    <script src="{% static 'js/answer_like.js' %}"></script>
+    <script src="{% static 'js/answer_correct.js' %}"></script>
   </body>
 </html>
