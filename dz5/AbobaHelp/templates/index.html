@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <div class="d-flex gap-3 align-items-center">
+        <h2 class="me-4">{{ title }}</h2>               
+        <a href="{% url 'hot' %}" class="link-underline link-underline-opacity-0 link-underline-opacity-75-hover">Hot questions</a>
+    </div>
+    <div class="card-group flex-column gap-3">
+        {% for question in questions %}
+            {% include 'temp_question.html' %}
+        {% endfor %}
+    </div>
+    {% include "temp_paginator.html" %}
+{% endblock %}

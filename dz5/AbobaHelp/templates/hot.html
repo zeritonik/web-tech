@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <div class="d-flex gap-3 align-items-center">
+        <h2 class="me-4">Hot questions!</h2>
+    </div>
+    <div class="card-group flex-column gap-3">
+        {% for question in questions %}
+            {% include 'temp_question.html' %}
+        {% endfor %}
+    </div>
+    {% include "temp_paginator.html" %}
+{% endblock %}

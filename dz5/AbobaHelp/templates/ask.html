@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+    <h2 class="mb-4 text-center">New question</h2>
+    <form class="d-flex flex-column align-items-center gap-3 mx-auto" method="post" style="width: fit-content;" action="">
+        {% csrf_token %}
+        {{ form }}
+        <input class="border-0 rounded-4 p-2 bg-success text-light" type="submit" value="Ask!">
+    </form>
+{% endblock %}
